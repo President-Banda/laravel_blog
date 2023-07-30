@@ -20,3 +20,11 @@ Route::get('/', function () {
 Route::get('/hello', function () {
     return ["Hello" => " World"];
 });
+
+Route::get('/posts', function () {
+    return view('posts');
+});
+
+Route::get('/post', function () {
+    return view('post');
+});
