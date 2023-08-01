@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,19 +27,35 @@ Route::get('/posts', function () {
 });
 
 Route::get('/posts/{post}', function ($slug) {
-    //return $slug;
-    $path = __DIR__ . "/../resources/posts/{$slug}.html";
+    $post = Post::find($slug);
 
-    //ddd($path);
-    if (!file_exists($path)) {
-        //dd('file does not exist');
-        return redirect('/');
-        //abort(404);
-    }
-    $post = file_get_contents($path);
     return view('post', [
         'post' => $post
     ]);
+
+
+    // Most of this logic needs to be in the Model
+
+    //return $slug;
+    //     $path = __DIR__ . "/../resources/posts/{$slug}.html";
+
+    //     //ddd($path);
+    //     if (!file_exists($path)) {
+    //         //dd('file does not exist');
+    //         return redirect('/');
+    //         //abort(404);
+    //     }
+
+    //     // helper functions for adding cache time now->addHour(), addMinutes(20), addDay
+    //     // use path can be substituted to $post ... fn() => file_get_contents($path))
+    //     $post = cache()->remember("post.{$slug}", 5, function () use ($path) {
+    //         var_dump('file_get_contents');
+    //         return file_get_contents($path);
+    //     });
+    //     //$post = file_get_contents($path);
+    //     return view('post', [
+    //         'post' => $post
+    //     ]);
 })->where('post', '[A-z_\-]+');
 
 // whereAlphaNumeric('post');
