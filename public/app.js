@@ -1,1 +1,1 @@
-alert("I am President!")
+//alert("I am President!")
