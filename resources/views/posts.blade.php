@@ -7,5 +7,5 @@
     <article>
         <?= $post; ?>
     </article>
-    <?php end foreach ?>
+    <?php endforeach ?>
 </body>

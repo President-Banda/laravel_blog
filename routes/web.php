@@ -15,7 +15,11 @@ use App\Models\Post;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $posts = Post::all();
+    //ddd($posts);
+    return view('welcome', [
+        'posts' => $posts
+    ]);
 });
 
 Route::get('/hello', function () {
@@ -23,7 +27,15 @@ Route::get('/hello', function () {
 });
 
 Route::get('/posts', function () {
-    return view('posts');
+    $posts = Post::all();
+
+    //ddd($posts);
+    return view(
+        'posts',
+        [
+            'posts' => $posts
+        ]
+    );
 });
 
 Route::get('/posts/{post}', function ($slug) {
