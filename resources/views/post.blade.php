@@ -5,7 +5,10 @@
 <body>
     <article>
 
-        <?= $post; ?>
+        <h1><?= $post->title; ?></h1>
+        <div>
+            <?= $post->body; ?>
+        </div>
         {{-- <h1><a href="/post">My First Post</a> </h1>
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus recusandae adipisci cumque

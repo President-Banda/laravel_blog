@@ -29,22 +29,22 @@ Route::get('/hello', function () {
 
 Route::get('/posts', function () {
 
-    $files = File::files(resource_path("posts/"));
+    // $files = File::files(resource_path("posts/"));
 
-    // Using collections
-    $posts = collect($files)
-        ->map(function ($file) {
-            return YamlFrontMatter::parseFile($file);
-        })
-        ->map(function ($document) {
-            return new Post(
-                $document->title,
-                $document->excerpt,
-                $document->date,
-                $document->body(),
-                $document->slug
-            );
-        });
+    // // Using collections
+    // $posts = collect($files)
+    //     ->map(function ($file) {
+    //         return YamlFrontMatter::parseFile($file);
+    //     })
+    //     ->map(function ($document) {
+    //         return new Post(
+    //             $document->title,
+    //             $document->excerpt,
+    //             $document->date,
+    //             $document->body(),
+    //             $document->slug
+    //         );
+    //     });
 
     // $posts = array_map(function ($file) {
     //     $document = YamlFrontMatter::parseFile($file);
@@ -66,7 +66,7 @@ Route::get('/posts', function () {
     return view(
         'posts',
         [
-            'posts' => $posts
+            'posts' => Post::all()
         ]
     );
 });
