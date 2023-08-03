@@ -34,8 +34,9 @@ Route::get('/posts', function () {
     // Using collections
     $posts = collect($files)
         ->map(function ($file) {
-            $document = YamlFrontMatter::parseFile($file);
-
+            return YamlFrontMatter::parseFile($file);
+        })
+        ->map(function ($document) {
             return new Post(
                 $document->title,
                 $document->excerpt,
